@@ -27,17 +27,17 @@ public class LruCache {
 			entry.value = value;//update it's value
 			removeNode(entry);//remove it from current position
 			addToTop(entry);//move it to first position
-		}else {
+		} else {
 			Entry node = new Entry();//create a new node
 			node.left = null;//do not link it to list
 			node.right = null;
 			node.value = value;//update it's value
 			node.key = key;//update it's key
 			if(hashMap.size() > CACHE_SIZE) {//if map has entries mode than max size
-				hashMap.remove(key);// then remove that entry from map
-				removeNode(node);// remove it from linked list
+				hashMap.remove(end.key);// then remove that entry from map
+				removeNode(end);// remove it from linked list
 				addToTop(node);//add it to the start of linked list
-			}else { // if max size is not reached
+			} else { // if max size is not reached
 				addToTop(node);// then add it to the start of linkedlist
 			}
 			hashMap.put(key, node);// add this node into hashmap
